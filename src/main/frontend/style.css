@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.pokemon-slider {
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+}
+.pokemon-slider .pokemon-card {
+    transition: 0.5s;
+    filter: brightness(0.3);
+}
+.pokemon-slider .pokemon-card:hover {
+    filter: brightness(1);
+    transform: translateZ(200px);
+}
+.pokemon-slider .pokemon-card:hover + * {
+    transform: translateZ(100px) rotateY(40deg);
+}
+.pokemon-slider .pokemon-card:has(+ *:hover) {
+    transform: translateZ(100px) rotateY(-40deg);
+}
+.pokemon-slider:has(.pokemon-card:hover) .pokemon-card:not(.pokemon-card:hover) {
+    filter: brightness(0.3) blur(5px);
+}
+
+.btn {
+    background-color: blue;
+
+}
